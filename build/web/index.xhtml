@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        Nome:<p:inputText id="nome" ></p:inputText> <br/>
+        Sobrenome:<p:inputText id="sobrenome" ></p:inputText> <br/>
+        Local da Moradia:<p:inputText id="localMoradia" ></p:inputText> <br/>
+        Qual seu esporte favorito?<p:inputText id="esporteFavorito" ></p:inputText> <br/>
+        
+        <h:outputText value="Está disposto a receber hospedes? " />
+        <p:selectOneButton value="#{selectOneView.option}">
+            <f:selectItem itemLabel="Sim" itemValue="Yes" />
+            <f:selectItem itemLabel="Não" itemValue="No" />
+        </p:selectOneButton><br/>
+        <h:outputLabel for="quantHospede" value="Quantidade de Hospedes: " />
+        <p:spinner id="minMax" value="#{spinnerView.number3}" min="0" max="100" /><br/>
+        
+    
+        
+        
+        <br />
+        <h:link outcome="welcomePrimefaces" value="Página de boas-vindas do Primefaces" />
+    </h:body>
+</html>
+
