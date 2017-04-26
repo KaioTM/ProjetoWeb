@@ -9,25 +9,15 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-
-        Nome:<p:inputText id="nome" ></p:inputText> <br/>
-        Sobrenome:<p:inputText id="sobrenome" ></p:inputText> <br/>
-        Local da Moradia:<p:inputText id="localMoradia" ></p:inputText> <br/>
-        Qual seu esporte favorito?<p:inputText id="esporteFavorito" ></p:inputText> <br/>
         
-        <h:outputText value="Está disposto a receber hospedes? " />
-        <p:selectOneButton value="#{selectOneView.option}">
-            <f:selectItem itemLabel="Sim" itemValue="Yes" />
-            <f:selectItem itemLabel="Não" itemValue="No" />
-        </p:selectOneButton><br/>
-        <h:outputLabel for="quantHospede" value="Quantidade de Hospedes: " />
-        <p:spinner id="minMax" value="#{spinnerView.number3}" min="0" max="100" /><br/>
-        
-    
-        
-        
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Página de boas-vindas do Primefaces" />
+        <form action="Cadastro" method="get">
+            ID:<input type="text" name="id"></input><br/>
+            Nome:<input type="text" name="nome"></input><br/>
+            Sobrenome:<input type="text" name="sobrenome"></input><br/>
+            Local de Moradia:<input type="text" name="localMoradia"></input><br/>
+            <input type="submit" value="Enviar"></input>
+        </form>
+   
     </h:body>
 </html>
 

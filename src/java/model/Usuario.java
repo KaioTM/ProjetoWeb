@@ -5,25 +5,42 @@
  */
 package model;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author KaioT
  */
-public class Usuario {
-    private int id;
+   @Entity
+   @Table( name="USUARIO")
+   public class Usuario implements Serializable {
+       
+    @Id
+    @Column (name= "USUARIOID")
+    private String id;
+    @Column(name = "NOME")
     private String nome;
+    @Column(name = "SOBRENOME")
     private String sobrenome;
+    @Column(name = "LOCALMORADIA")
     private String localMoradia;
-    private String esporteFavorito;
-    private String dispostoReceberHospede;
-    private int quantHospede;
-    private int funcao;
+    
+    public Usuario(String id, String nome, String sobrenome, String localMoradia) {
+        this.id = id;
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.localMoradia = localMoradia;
+    }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -43,46 +60,11 @@ public class Usuario {
         this.sobrenome = sobrenome;
     }
 
-    public int getFuncao() {
-        return funcao;
-    }
-
-    public void setFuncao(int funcao) {
-        this.funcao = funcao;
-    }
-
     public String getLocalMoradia() {
         return localMoradia;
     }
 
     public void setLocalMoradia(String localMoradia) {
         this.localMoradia = localMoradia;
-    }
-
-    public String getEsporteFavorito() {
-        return esporteFavorito;
-    }
-
-    public void setEsporteFavorito(String esporteFavorito) {
-        this.esporteFavorito = esporteFavorito;
-    }
-
-    public String getDispostoReceberHospede() {
-        return dispostoReceberHospede;
-    }
-
-    public void setDispostoReceberHospede(String dispostoReceberHospede) {
-        this.dispostoReceberHospede = dispostoReceberHospede;
-    }
-
-    public int getQuantHospede() {
-        return quantHospede;
-    }
-
-    public void setQuantHospede(int quantHospede) {
-        this.quantHospede = quantHospede;
-    }
-   
-    
-    
+    }  
 }
