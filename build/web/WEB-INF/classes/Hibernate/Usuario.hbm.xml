@@ -6,5 +6,6 @@
     <property name="nome" column="NOME"/>
     <property name="sobrenome" column="SOBRENOME"/>
     <property name="localMoradia" column="LOCALMORADIA"/>
+    <property name="esporteFavorito" column="ESPORTEFAVORITO"/>
     </class>
 </hibernate-mapping>
