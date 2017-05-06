@@ -38,9 +38,16 @@ public class Cadastro extends HttpServlet {
         Session session = HibernateSessionFactory.getSession();
         try (PrintWriter out = response.getWriter()) {
         session.beginTransaction();
-        Usuario usuario = new Usuario(request.getParameter("id"),request.getParameter("nome"), request.getParameter("sobrenome"),request.getParameter("localMoradia"),request.getParameter("esporteFavorito"),request.getParameter("receberHospede"));
-        request.setAttribute("usuario", usuario);
-        session.save(usuario);
+        if (request.getParameter("receberHospede").equals("S")){
+            Usuario usuario = new Usuario(request.getParameter("id"),request.getParameter("nome"), request.getParameter("sobrenome"),request.getParameter("localMoradia"),request.getParameter("esporteFavorito"),request.getParameter("receberHospede"),Integer.parseInt(request.getParameter("quantidadeHospede")));
+            request.setAttribute("usuario", usuario);
+            session.save(usuario);
+        }else{
+            Usuario usuario = new Usuario(request.getParameter("id"),request.getParameter("nome"), request.getParameter("sobrenome"),request.getParameter("localMoradia"),request.getParameter("esporteFavorito"),request.getParameter("receberHospede"));
+            request.setAttribute("usuario", usuario);
+            session.save(usuario);
+        }
+        
         session.getTransaction().commit();
         session.close();
         RequestDispatcher view = 

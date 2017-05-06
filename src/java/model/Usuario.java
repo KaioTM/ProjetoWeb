@@ -32,6 +32,8 @@ import javax.persistence.Table;
     private String localMoradia;
     @Column(name = "RECEBERHOSPEDE")
     private String receberHospede;
+    @Column(name = "QUANTIDADEHOSPEDE")
+    private int quantidadeHospede;
     
     public Usuario(String id, String nome, String sobrenome, String localMoradia, String esporteFavorito, String receberHospede) {
         this.id = id;
@@ -40,6 +42,16 @@ import javax.persistence.Table;
         this.localMoradia = localMoradia;
         this.esporteFavorito = esporteFavorito;
         this.receberHospede = receberHospede;
+    }
+    
+     public Usuario(String id, String nome, String sobrenome, String localMoradia, String esporteFavorito, String receberHospede,int quantidadeHospede) {
+        this.id = id;
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.localMoradia = localMoradia;
+        this.esporteFavorito = esporteFavorito;
+        this.receberHospede = receberHospede;
+        this.quantidadeHospede = quantidadeHospede;
     }
 
     public String getId() {
@@ -88,5 +100,13 @@ import javax.persistence.Table;
 
     public void setReceberHospede(String receberHospede) {
         this.receberHospede = receberHospede;
+    }
+
+    public int getQuantidadeHospede() {
+        return quantidadeHospede;
+    }
+
+    public void setQuantidadeHospede(int quantidadeHospede) {
+        this.quantidadeHospede = quantidadeHospede;
     }
 }
