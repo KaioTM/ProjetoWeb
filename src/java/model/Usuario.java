@@ -21,7 +21,7 @@ import javax.persistence.Table;
        
     @Id
     @Column (name= "USUARIOID")
-    private String id;
+    private int id;
     @Column(name = "NOME")
     private String nome;
     @Column(name = "SOBRENOME")
@@ -35,7 +35,7 @@ import javax.persistence.Table;
     @Column(name = "QUANTIDADEHOSPEDE")
     private int quantidadeHospede;
     
-    public Usuario(String id, String nome, String sobrenome, String localMoradia, String esporteFavorito, String receberHospede) {
+    public Usuario(int id, String nome, String sobrenome, String localMoradia, String esporteFavorito, String receberHospede) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -44,7 +44,7 @@ import javax.persistence.Table;
         this.receberHospede = receberHospede;
     }
     
-     public Usuario(String id, String nome, String sobrenome, String localMoradia, String esporteFavorito, String receberHospede,int quantidadeHospede) {
+     public Usuario(int id, String nome, String sobrenome, String localMoradia, String esporteFavorito, String receberHospede,int quantidadeHospede) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -54,11 +54,11 @@ import javax.persistence.Table;
         this.quantidadeHospede = quantidadeHospede;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

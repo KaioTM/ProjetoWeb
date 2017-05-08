@@ -15,7 +15,7 @@
     <body>
         <h1>
             
-            ID: <%= request.getParameter("id") %>
+     
             <br>
             Nome: <%= request.getParameter("nome") %>
             <br>

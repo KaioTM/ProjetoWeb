@@ -5,6 +5,7 @@
  */
 package model;
 
+import DAO.UsuarioDAO;
 import Session.HibernateSessionFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -39,13 +40,14 @@ public class Cadastro extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
         session.beginTransaction();
         if (request.getParameter("receberHospede").equals("S")){
-            Usuario usuario = new Usuario(request.getParameter("id"),request.getParameter("nome"), request.getParameter("sobrenome"),request.getParameter("localMoradia"),request.getParameter("esporteFavorito"),request.getParameter("receberHospede"),Integer.parseInt(request.getParameter("quantidadeHospede")));
-            request.setAttribute("usuario", usuario);
-            session.save(usuario);
+            UsuarioDAO cadastroUsuario = new UsuarioDAO();
+            cadastroUsuario.create(request.getParameter("nome"), request.getParameter("sobrenome"), request.getParameter("localMoradia"), request.getParameter("esporteFavorito"), request.getParameter("receberHospede"), request.getParameter("quantidadeHospede"));
+//            Usuario usuario = new Usuario(request.getParameter("id"),request.getParameter("nome"), request.getParameter("sobrenome"),request.getParameter("localMoradia"),request.getParameter("esporteFavorito"),request.getParameter("receberHospede"),Integer.parseInt(request.getParameter("quantidadeHospede")));
+//            request.setAttribute("usuario", usuario);
+//            session.save(usuario);
         }else{
-            Usuario usuario = new Usuario(request.getParameter("id"),request.getParameter("nome"), request.getParameter("sobrenome"),request.getParameter("localMoradia"),request.getParameter("esporteFavorito"),request.getParameter("receberHospede"));
-            request.setAttribute("usuario", usuario);
-            session.save(usuario);
+            UsuarioDAO cadastroUsuario = new UsuarioDAO();
+            cadastroUsuario.create(request.getParameter("nome"), request.getParameter("sobrenome"), request.getParameter("localMoradia"), request.getParameter("esporteFavorito"), request.getParameter("receberHospede"));
         }
         
         session.getTransaction().commit();
