@@ -9,6 +9,7 @@ import DAO.UsuarioDAO;
 import Session.HibernateSessionFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,10 +46,12 @@ public class Cadastro extends HttpServlet {
 //            Usuario usuario = new Usuario(request.getParameter("id"),request.getParameter("nome"), request.getParameter("sobrenome"),request.getParameter("localMoradia"),request.getParameter("esporteFavorito"),request.getParameter("receberHospede"),Integer.parseInt(request.getParameter("quantidadeHospede")));
 //            request.setAttribute("usuario", usuario);
 //            session.save(usuario);
+
         }else{
             UsuarioDAO cadastroUsuario = new UsuarioDAO();
             cadastroUsuario.create(request.getParameter("nome"), request.getParameter("sobrenome"), request.getParameter("localMoradia"), request.getParameter("esporteFavorito"), request.getParameter("receberHospede"));
         }
+        
         
         session.getTransaction().commit();
         session.close();

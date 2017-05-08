@@ -4,7 +4,9 @@
     Author     : KaioT
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="model.Usuario"%>
+<%@page import="DAO.UsuarioDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,8 +16,14 @@
     </head>
     <body>
         <h1>
-            
-     
+            <table>
+                <c:forEach var="user" items="${UsuarioDAO.consultarTodos}">
+                    <tr>
+                        <td>${user.nome}</td>
+                        <td>${user.sobrenome}</td>
+                    </tr>                   
+                </c:forEach>
+            </table>
             <br>
             Nome: <%= request.getParameter("nome") %>
             <br>

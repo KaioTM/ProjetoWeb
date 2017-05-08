@@ -9,15 +9,20 @@ import Connection.ConnectionFactory;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import model.Usuario;
 
 /**
  *
  * @author KaioT
  */
 public class UsuarioDAO {
- 
+    private EntityManager Em;
     
     public void create(String nome,String sobreNome,String localMoradia,String esporteFavorito,String receberHospede,String quantidadeHospede){
         
@@ -56,23 +61,28 @@ public class UsuarioDAO {
         }
     }
 
-//    static public Usuario getUsuario(String usuario, String senha) throws SQLException {
-//        Usuario u = null;
-//        PreparedStatement sql = ConnectionFactory.getConnection().prepareStatement(
-//                "SELECT USUARIO, SENHA, NOME "
-//                        + "FROM USUARIOS "
-//                        + "WHERE USUARIO=? AND SENHA=?");
-//        sql.setString(1, usuario);
-//        sql.setString(2, senha);
-//        ResultSet rs = sql.executeQuery();
-//        if (rs.next()) {
-//            u = new Usuario(
-//                    rs.getString("USUARIO"),
-//                    rs.getString("SENHA"),
-//                    rs.getString("NOME"));
-//        }
-//        return u;
-//    }
+     public List<Usuario> consultarTodos() throws SQLException {
+        EntityManager em = getEm();
+        List<Usuario> usuarios; 
+        
+        try{
+        Query q = em.createNamedQuery("Usuario.findAll");
+        usuarios = q.getResultList();
+        } catch (Exception e){
+            usuarios = new ArrayList();
+        } finally {
+            em.close();
+        }
+        return usuarios;
+    }
+
+    public EntityManager getEm() {
+        return Em;
+    }
+
+    public void setEm(EntityManager Em) {
+        this.Em = Em;
+    }
         
         
     }
