@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    
+    <h:body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <form action="Cadastro" method="post">
+            
+            Nome:<input type="text" name="nome"></input><br/>
+            Sobrenome:<input type="text" name="sobrenome"></input><br/>
+            Local de Moradia:<input type="text" name="localMoradia"></input><br/>
+            Esporte favorito: <input type="text" name="esporteFavorito"></input><br/>
+            Deseja receber hospedes?
+            <input name="receberHospede" type="radio" id="sim" value="S" checked="checked"/>Sim
+            <input name="receberHospede" type="radio" id="nao" value="N" />Não<br/>
+            Quantidade de Hospedes:<select name='quantidadeHospede'>
+                <option selected="selected">Selecione...</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select><br/>
+            Login:<input name="login" type="text"></input> <br/>
+            Senha:<input name="senha" type="password"></input> <br/>
+            <script type="text/javascript">
+                
+            $('input[name="receberHospede"]').on('change', function() {
+            $('select[name="quantidadeHospede"]').attr('disabled', this.value != "S")
+            });
+    
+                
+            </script>
+            <input type="submit" value="Enviar"></input>
+            <a href="login.jsp">Voltar ao Login</a>
+        </form>
+   
+    </h:body>
+
+</html>
+

@@ -12,24 +12,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Redirecionando...</title>
     </head>
     <body>
         <h1>
-            <table>
-                <c:forEach var="user" items="${UsuarioDAO.consultarTodos}">
-                    <tr>
-                        <td>${user.nome}</td>
-                        <td>${user.sobrenome}</td>
-                    </tr>                   
-                </c:forEach>
-            </table>
-            <br>
-            Nome: <%= request.getParameter("nome") %>
-            <br>
-            Sobrenome: <%= request.getParameter("sobrenome") %>
-            <br>
-            Local de Moradia: <%= request.getParameter("localMoradia") %>
+            <h1> Usuário cadastrado com sucesso!</h1><br/>
+            Redirecionando para o login...
+            <meta http-equiv=refresh content=6;URL="login.jsp" />
             
             
         </h1>

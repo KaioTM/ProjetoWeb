@@ -24,6 +24,15 @@ import model.Usuario;
 public class UsuarioDAO {
     private EntityManager Em;
     
+    public EntityManager getEm() {
+        return Em;
+    }
+
+    public void setEm(EntityManager Em) {
+        this.Em = Em;
+    }
+        
+    
     public void create(String nome,String sobreNome,String localMoradia,String esporteFavorito,String receberHospede,String quantidadeHospede,String login,String senha){
         
         PreparedStatement sql;
@@ -62,6 +71,24 @@ public class UsuarioDAO {
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }    
+    
+    public Usuario autenticacao (String login, String senha){
+        Usuario usuarioRetorno = null;
+        PreparedStatement sql;
+        try {
+            sql = ConnectionFactory.getConnection().prepareStatement(
+                    "SELECT * FROM USUARIO WHERE LOGIN=? and SENHA=?");
+            sql.setString(1, login);
+            sql.setString(2, senha);
+            ResultSet resultado = sql.executeQuery();
+            if(resultado.next()){
+                usuarioRetorno = new Usuario(resultado.getInt(1),resultado.getString(2),resultado.getString(3),resultado.getString(4),resultado.getString(5),resultado.getString(6),resultado.getInt(7),resultado.getString(8),resultado.getString(9));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return usuarioRetorno;
     }
 
      public List<Usuario> consultarTodos() throws SQLException {
@@ -79,13 +106,4 @@ public class UsuarioDAO {
         return usuarios;
     }
 
-    public EntityManager getEm() {
-        return Em;
-    }
-
-    public void setEm(EntityManager Em) {
-        this.Em = Em;
-    }
-        
-        
-    }
+}

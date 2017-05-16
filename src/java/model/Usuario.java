@@ -65,6 +65,11 @@ import javax.persistence.Table;
         this.senha = senha;
     }
 
+    public Usuario(String login, String senha) {
+        this.login = login;
+        this.senha = senha;
+    }
+
     public int getId() {
         return id;
     }
