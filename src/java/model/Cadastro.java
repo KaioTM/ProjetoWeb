@@ -42,14 +42,14 @@ public class Cadastro extends HttpServlet {
         session.beginTransaction();
         if (request.getParameter("receberHospede").equals("S")){
             UsuarioDAO cadastroUsuario = new UsuarioDAO();
-            cadastroUsuario.create(request.getParameter("nome"), request.getParameter("sobrenome"), request.getParameter("localMoradia"), request.getParameter("esporteFavorito"), request.getParameter("receberHospede"), request.getParameter("quantidadeHospede"));
+            cadastroUsuario.create(request.getParameter("nome"), request.getParameter("sobrenome"), request.getParameter("localMoradia"), request.getParameter("esporteFavorito"), request.getParameter("receberHospede"), request.getParameter("quantidadeHospede"), request.getParameter("login"), request.getParameter("senha"));
 //            Usuario usuario = new Usuario(request.getParameter("id"),request.getParameter("nome"), request.getParameter("sobrenome"),request.getParameter("localMoradia"),request.getParameter("esporteFavorito"),request.getParameter("receberHospede"),Integer.parseInt(request.getParameter("quantidadeHospede")));
 //            request.setAttribute("usuario", usuario);
 //            session.save(usuario);
 
         }else{
             UsuarioDAO cadastroUsuario = new UsuarioDAO();
-            cadastroUsuario.create(request.getParameter("nome"), request.getParameter("sobrenome"), request.getParameter("localMoradia"), request.getParameter("esporteFavorito"), request.getParameter("receberHospede"));
+            cadastroUsuario.create(request.getParameter("nome"), request.getParameter("sobrenome"), request.getParameter("localMoradia"), request.getParameter("esporteFavorito"), request.getParameter("receberHospede"), request.getParameter("login"), request.getParameter("senha"));
         }
         
         

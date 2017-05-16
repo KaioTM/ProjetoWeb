@@ -36,17 +36,24 @@ import javax.persistence.Table;
     private String receberHospede;
     @Column(name = "QUANTIDADEHOSPEDE")
     private int quantidadeHospede;
+    @Column (name = "LOGIN")
+    private String login;
+    @Column (name = "SENHA")
+    private String senha;
     
-    public Usuario(int id, String nome, String sobrenome, String localMoradia, String esporteFavorito, String receberHospede) {
+    
+    public Usuario(int id, String nome, String sobrenome, String localMoradia, String esporteFavorito, String receberHospede, String login, String senha) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.localMoradia = localMoradia;
         this.esporteFavorito = esporteFavorito;
         this.receberHospede = receberHospede;
+        this.login = login;
+        this.senha = senha;
     }
     
-     public Usuario(int id, String nome, String sobrenome, String localMoradia, String esporteFavorito, String receberHospede,int quantidadeHospede) {
+     public Usuario(int id, String nome, String sobrenome, String localMoradia, String esporteFavorito, String receberHospede,int quantidadeHospede, String login, String senha) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -54,6 +61,8 @@ import javax.persistence.Table;
         this.esporteFavorito = esporteFavorito;
         this.receberHospede = receberHospede;
         this.quantidadeHospede = quantidadeHospede;
+        this.login = login;
+        this.senha = senha;
     }
 
     public int getId() {
@@ -110,5 +119,21 @@ import javax.persistence.Table;
 
     public void setQuantidadeHospede(int quantidadeHospede) {
         this.quantidadeHospede = quantidadeHospede;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }

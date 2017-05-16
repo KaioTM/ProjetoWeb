@@ -24,18 +24,20 @@ import model.Usuario;
 public class UsuarioDAO {
     private EntityManager Em;
     
-    public void create(String nome,String sobreNome,String localMoradia,String esporteFavorito,String receberHospede,String quantidadeHospede){
+    public void create(String nome,String sobreNome,String localMoradia,String esporteFavorito,String receberHospede,String quantidadeHospede,String login,String senha){
         
         PreparedStatement sql;
         try {
             sql = ConnectionFactory.getConnection().prepareStatement(
-                    "INSERT INTO USUARIO (NOME,SOBRENOME,LOCALMORADIA,ESPORTEFAVORITO,RECEBERHOSPEDE,QUANTIDADEHOSPEDE) values(?,?,?,?,?,?)");
+                    "INSERT INTO USUARIO (NOME,SOBRENOME,LOCALMORADIA,ESPORTEFAVORITO,RECEBERHOSPEDE,QUANTIDADEHOSPEDE,LOGIN,SENHA) values(?,?,?,?,?,?,?,?)");
             sql.setString(1, nome);
             sql.setString(2, sobreNome);
             sql.setString(3, localMoradia);
             sql.setString(4, esporteFavorito);
             sql.setString(5, receberHospede);
             sql.setString(6, quantidadeHospede);
+            sql.setString(7, login);
+            sql.setString(8, senha);
             
             sql.execute();
         } catch (SQLException ex) {
@@ -43,18 +45,19 @@ public class UsuarioDAO {
         }
     }
     
-    public void create(String nome,String sobreNome,String localMoradia,String esporteFavorito,String receberHospede){
+    public void create(String nome,String sobreNome,String localMoradia,String esporteFavorito,String receberHospede,String login,String senha){
         
         PreparedStatement sql;
         try {
             sql = ConnectionFactory.getConnection().prepareStatement(
-                    "INSERT INTO USUARIO (NOME,SOBRENOME,LOCALMORADIA,ESPORTEFAVORITO,RECEBERHOSPEDE) values(?,?,?,?,?)");
+                    "INSERT INTO USUARIO (NOME,SOBRENOME,LOCALMORADIA,ESPORTEFAVORITO,RECEBERHOSPEDE,LOGIN,SENHA) values(?,?,?,?,?,?,?)");
             sql.setString(1, nome);
             sql.setString(2, sobreNome);
             sql.setString(3, localMoradia);
             sql.setString(4, esporteFavorito);
             sql.setString(5, receberHospede);
-            
+            sql.setString(6, login);
+            sql.setString(7, senha);
             sql.execute();
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);

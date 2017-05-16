@@ -9,6 +9,8 @@
     <property name="esporteFavorito" column="ESPORTEFAVORITO"/>
     <property name="receberHospede" column="RECEBERHOSPEDE"/>
     <property name="quantidadeHospede" column="QUANTIDADEHOSPEDE"/>
+    <property name="login" column="LOGIN"/>
+    <property name="senha" column="SENHA"/>
     
     </class>
 </hibernate-mapping>
