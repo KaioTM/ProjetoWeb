@@ -9,6 +9,7 @@ import Connection.ConnectionFactory;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -104,6 +105,23 @@ public class UsuarioDAO {
             em.close();
         }
         return usuarios;
+    }
+     
+    public Usuario consultarUserid(int usuarioId) throws SQLException {
+        Usuario usuarioRetorno = null;
+        PreparedStatement sql;
+        try {
+            sql = ConnectionFactory.getConnection().prepareStatement(
+                    "SELECT * FROM USUARIO WHERE USUARIOID=?");
+            sql.setInt(1, usuarioId);
+            ResultSet resultado = sql.executeQuery();
+            if(resultado.next()){
+                usuarioRetorno = new Usuario(resultado.getInt(1),resultado.getString(2),resultado.getString(3),resultado.getString(4),resultado.getString(5),resultado.getString(6),resultado.getInt(7),resultado.getString(8),resultado.getString(9));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return usuarioRetorno;
     }
 
 }

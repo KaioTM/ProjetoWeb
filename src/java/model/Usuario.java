@@ -52,6 +52,11 @@ import javax.persistence.Table;
         this.login = login;
         this.senha = senha;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", esporteFavorito=" + esporteFavorito + ", localMoradia=" + localMoradia + ", receberHospede=" + receberHospede + ", quantidadeHospede=" + quantidadeHospede + ", login=" + login + ", senha=" + senha + '}';
+    }
     
      public Usuario(int id, String nome, String sobrenome, String localMoradia, String esporteFavorito, String receberHospede,int quantidadeHospede, String login, String senha) {
         this.id = id;

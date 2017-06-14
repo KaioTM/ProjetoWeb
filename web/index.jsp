@@ -1,3 +1,4 @@
+<%@page import="model.Usuario"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,7 +47,9 @@
 	<!-- Main jumbotron for a primary marketing message or call to action -->
 	<div class="jumbotron">
 		<div class="container">
-			<h1>Hello, world!</h1>
+                    <h1 style="display: none">Hello, 
+                        <span id="nome"></span>!
+                    </h1>
 			<p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
 			<p><a class="btn btn-primary btn-lg" href="#" role="button" data-toggle="modal" data-target="#myModal">Learn more &raquo;</a></p>
 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
@@ -99,15 +102,19 @@
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script>
-		window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
-		$('#myModal').on('shown.bs.modal', function () {
-			$('#myInput').focus()
-		})
-	</script>
 	<script src="js/bootstrap.min.js"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+        
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $.get('Usuario', { usuarioId: 2 }, function(usuario) {
+                    //document.getElementById("nome").innerHTML(usuario.nome);
+                    $("#nome").html(usuario.nome);
+                    $("#nome").parent().show();
+                });
+            });
+        </script>
 </body>
 
 </html>
